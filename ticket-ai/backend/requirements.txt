@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+scikit-learn
+streamlit
+requests
+email-validator
+python-dotenv
+bcrypt
+python-jose[cryptography]
+python-multipart
+groq
