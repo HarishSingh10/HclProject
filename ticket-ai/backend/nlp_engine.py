@@ -54,15 +54,27 @@ def generate_ai_resolution(new_ticket_desc: str, historical_tickets: list):
                 for idx in top_indices:
                     score = cosine_similarities[idx]
                     match = df.iloc[idx]
+                    res_text = match['resolution_text']
+                    # Skip if the text is clearly a JSON array (AI generated list) to prevent recursive feedback loops
+                    if str(res_text).startswith('[') and str(res_text).endswith(']'):
+                        continue
+                        
                     context_parts.append(
-                        f"- Suggestion (Similarity: {score:.4f}): {match['resolution_text']}"
+                        f"- Suggestion (Similarity: {score:.4f}): {res_text}"
                     )
+                
                 historical_context = "\n".join(context_parts)
+                if not historical_context:
+                    historical_context = "No previous organic resolutions available."
+                    
             except Exception as e:
                 # Fallback if TFIDF fails (e.g. empty vocab)
                 historical_context = ""
-                for t in historical_tickets[-5:]:
-                    historical_context += f"- Fix: {t['resolution_text']}\n"
+                for t in historical_tickets[-20:]:  # Check last 20 to find 5 good ones
+                    if not str(t['resolution_text']).startswith('['):
+                        historical_context += f"- Fix: {t['resolution_text']}\n"
+                        if historical_context.count("- Fix") >= 5:
+                            break
     
         # 4. Prompt for Groq
         prompt = f"""
