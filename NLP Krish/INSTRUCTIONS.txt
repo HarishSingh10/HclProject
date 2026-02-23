@@ -1,0 +1,115 @@
+================================================================================
+                    IT TICKET NLP ENGINE - INSTRUCTIONS
+================================================================================
+
+WHAT YOU HAVE:
+--------------
+✓ customer_support_tickets.csv (your original dataset)
+✓ Complete NLP engine for ticket resolution recommendations
+✓ All necessary Python scripts
+
+WHAT TO DO NOW:
+---------------
+
+OPTION 1: AUTOMATIC SETUP (RECOMMENDED)
+========================================
+Just run ONE command:
+
+    python run.py
+
+This will automatically:
+- Check your dataset
+- Preprocess the data
+- Load the NLP engine
+- Run a test
+- Tell you what to do next
+
+OPTION 2: MANUAL STEP-BY-STEP
+==============================
+
+Step 1: Install dependencies
+    pip install pandas numpy scikit-learn
+
+Step 2: Preprocess data
+    python run_preprocessing.py
+
+Step 3: Test the engine
+    python test_nlp.py
+
+
+WHAT EACH FILE DOES:
+--------------------
+
+run.py                      → Master script (run this first!)
+run_preprocessing.py        → Just preprocessing
+preprocess_data.py          → Core preprocessing logic
+nlp_engine.py              → NLP recommendation engine
+test_nlp.py                → Interactive testing
+requirements.txt           → Python dependencies
+
+START_HERE.md              → Quick start guide
+README.md                  → Complete documentation
+QUICKSTART.md              → 3-step setup
+PROJECT_SUMMARY.md         → Project overview
+NLP_PIPELINE.md            → Technical architecture
+
+
+EXPECTED OUTPUT:
+----------------
+After preprocessing, you'll have:
+- processed_tickets.csv (~3,000 clean tickets)
+- Working NLP engine ready to use
+
+
+TROUBLESHOOTING:
+----------------
+
+Error: "customer_support_tickets.csv not found"
+→ Make sure CSV is in the same folder as Python scripts
+
+Error: "No module named 'pandas'"
+→ Run: pip install pandas numpy scikit-learn
+
+Error: "processed_tickets.csv not found"
+→ Run: python run_preprocessing.py first
+
+
+QUICK TEST:
+-----------
+After setup, try this in Python:
+
+    from nlp_engine import TicketNLPEngine
+    
+    engine = TicketNLPEngine()
+    engine.load_data('processed_tickets.csv')
+    
+    results = engine.find_similar_tickets(
+        ticket_type="technical issue",
+        subject="network problem",
+        description="cannot connect to wifi",
+        top_k=3
+    )
+    
+    for r in results:
+        print(f"Resolution: {r['resolution']}")
+        print(f"Match: {r['similarity_score']:.1%}\n")
+
+
+NEXT STEPS:
+-----------
+1. Run: python run.py
+2. Test with your own tickets
+3. Integrate into your application
+4. Read README.md for advanced usage
+
+
+NEED HELP?
+----------
+- Read START_HERE.md for detailed setup
+- Check README.md for complete documentation
+- Review PROJECT_SUMMARY.md for overview
+
+
+================================================================================
+                        READY? RUN: python run.py
+================================================================================

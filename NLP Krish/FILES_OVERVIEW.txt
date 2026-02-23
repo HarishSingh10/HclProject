@@ -1,0 +1,187 @@
+================================================================================
+                        PROJECT FILES OVERVIEW
+================================================================================
+
+📊 YOUR DATA:
+-------------
+customer_support_tickets.csv    Your original dataset (18,763 tickets)
+
+
+🚀 RUN THESE:
+-------------
+run.py                          ⭐ START HERE - Automatic setup & test
+run_preprocessing.py            Just run preprocessing
+test_nlp.py                     Interactive testing interface
+
+
+🔧 CORE ENGINE:
+---------------
+nlp_engine.py                   NLP recommendation engine (main code)
+preprocess_data.py              Data cleaning & preprocessing logic
+requirements.txt                Python dependencies (pandas, numpy, scikit-learn)
+
+
+📖 DOCUMENTATION:
+-----------------
+START_HERE.md                   ⭐ Quick start guide (read this first!)
+INSTRUCTIONS.txt                Simple text instructions
+README.md                       Complete technical documentation
+QUICKSTART.md                   3-step setup guide
+PROJECT_SUMMARY.md              Project overview & examples
+NLP_PIPELINE.md                 Technical architecture diagram
+FILES_OVERVIEW.txt              This file
+
+
+📁 GENERATED FILES (after running):
+-----------------------------------
+processed_tickets.csv           Cleaned dataset (~3,000 tickets)
+nlp_model.pkl                   Saved model (optional)
+
+
+================================================================================
+                            QUICK START
+================================================================================
+
+1. Install dependencies:
+   pip install pandas numpy scikit-learn
+
+2. Run the system:
+   python run.py
+
+3. That's it! Follow the on-screen instructions.
+
+
+================================================================================
+                        FILE SIZES (APPROXIMATE)
+================================================================================
+
+customer_support_tickets.csv    ~5 MB    (original data)
+processed_tickets.csv           ~1 MB    (after preprocessing)
+nlp_engine.py                   ~8 KB    (main engine)
+preprocess_data.py              ~4 KB    (preprocessing)
+test_nlp.py                     ~6 KB    (testing interface)
+
+
+================================================================================
+                        WHAT EACH SCRIPT DOES
+================================================================================
+
+run.py
+------
+Master script that:
+✓ Checks if dataset exists
+✓ Runs preprocessing automatically if needed
+✓ Loads NLP engine
+✓ Runs a quick test
+✓ Shows you what to do next
+
+run_preprocessing.py
+--------------------
+Focused script that:
+✓ Checks for input CSV
+✓ Runs preprocessing only
+✓ Creates processed_tickets.csv
+✓ Shows statistics
+
+preprocess_data.py
+------------------
+Core preprocessing:
+✓ Extracts 5 columns (Type, Subject, Description, Resolution, Priority)
+✓ Cleans text (removes emails, URLs, phone numbers, etc.)
+✓ Filters invalid data
+✓ Removes duplicates
+✓ Saves cleaned data
+
+nlp_engine.py
+-------------
+NLP recommendation engine:
+✓ TF-IDF vectorization
+✓ Cosine similarity matching
+✓ Weighted feature combination
+✓ Top-K ranking
+✓ Resolution summarization
+✓ Model save/load
+
+test_nlp.py
+-----------
+Interactive testing:
+✓ Load engine
+✓ Enter test tickets
+✓ See recommendations
+✓ Predefined test cases
+
+
+================================================================================
+                        TYPICAL WORKFLOW
+================================================================================
+
+First Time:
+-----------
+1. python run.py                    (automatic setup)
+2. python test_nlp.py               (test with your tickets)
+3. Read README.md                   (learn advanced features)
+
+Daily Use:
+----------
+from nlp_engine import TicketNLPEngine
+
+engine = TicketNLPEngine()
+engine.load_data('processed_tickets.csv')
+
+results = engine.find_similar_tickets(
+    ticket_type="technical issue",
+    subject="your subject",
+    description="your description",
+    top_k=3
+)
+
+
+================================================================================
+                        DOCUMENTATION GUIDE
+================================================================================
+
+Want to...                      Read this file:
+--------------                  ---------------
+Get started quickly             START_HERE.md
+Understand the project          PROJECT_SUMMARY.md
+Learn technical details         README.md
+See architecture                NLP_PIPELINE.md
+Quick reference                 QUICKSTART.md
+Simple instructions             INSTRUCTIONS.txt
+
+
+================================================================================
+                        TROUBLESHOOTING
+================================================================================
+
+Problem: FileNotFoundError
+Solution: Run python run.py (it handles everything)
+
+Problem: ModuleNotFoundError
+Solution: pip install pandas numpy scikit-learn
+
+Problem: No similar tickets found
+Solution: Normal for very different tickets, try other test cases
+
+Problem: Low similarity scores
+Solution: Use more descriptive ticket descriptions
+
+
+================================================================================
+                        SUCCESS INDICATORS
+================================================================================
+
+After running python run.py, you should see:
+
+✓ customer_support_tickets.csv found
+✓ Preprocessing completed
+✓ NLP Engine loaded successfully
+✓ Found X similar tickets
+✓ ALL CHECKS PASSED
+
+If you see all these, you're ready to go!
+
+
+================================================================================
+                    READY TO START? RUN: python run.py
+================================================================================
