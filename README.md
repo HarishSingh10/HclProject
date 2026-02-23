@@ -1,7 +1,8 @@
 # IT Ticket Resolution Suggestion Engine (AI + NLP-Based Support Assistant)
 
 Full-stack IT support ticket system that uses a hybrid NLP approach to instantly suggest solutions for users. It first uses text similarity (TF-IDF + Cosine Similarity from Scikit-Learn) to find the top historical matches, and then runs those matches through the Groq LLaMA 3.1 8B LLM to generate exactly 5 synthesized, actionable resolution points.
-
+## Deployed Link
+https://hclproject-hgdkblntnm3ntmcf9vgp5i.streamlit.app/
 ## Architecture
 - **Frontend**: Streamlit
 - **Backend API**: FastAPI
