@@ -55,6 +55,11 @@ def generate_ai_resolution(new_ticket_desc: str, historical_tickets: list):
                     score = cosine_similarities[idx]
                     match = df.iloc[idx]
                     res_text = match['resolution_text']
+                    
+                    # Force ignore if there is ZERO match similarity (stops irrelevant VPN fixes showing up for Printer issues)
+                    if score < 0.05:
+                        continue
+                        
                     # Skip if the text is clearly a JSON array (AI generated list) to prevent recursive feedback loops
                     if str(res_text).startswith('[') and str(res_text).endswith(']'):
                         continue
@@ -76,7 +81,6 @@ def generate_ai_resolution(new_ticket_desc: str, historical_tickets: list):
                         if historical_context.count("- Fix") >= 5:
                             break
     
-        # 4. Prompt for Groq
         prompt = f"""
 You are an expert customer support AI agent. A user has submitted a new support issue.
 Below are some top historical resolutions for similar issues retrieved from our database using TF-IDF similarity.
@@ -86,22 +90,22 @@ New User Issue: "{new_ticket_desc}"
 Historical Resolutions:
 {historical_context}
 
-Your task is to review these historical resolutions, synthesize them, and provide EXACTLY 5 actionable suggestions for the user.
+Your task is to review these historical resolutions. If the historical resolutions are strongly relevant, synthesize them into 5 actionable steps.
+HOWEVER, if the historical resolutions are missing, or seem completely irrelevant to the User's Issue, YOU MUST completely ignore them and brainstorm exactly 5 highly relevant, dynamic, and unique troubleshooting steps based on your expert IT knowledge. Provide fresh and specific steps!
+
 Return your output STRICTLY as a valid JSON array of 5 plain strings. Do NOT include markdown, metrics, or anything else outside the JSON block.
 
-Example output:
+Example output format only:
 [
-  "Restart the router",
-  "Check cable connections",
-  "Clear browser cache",
-  "Reset password",
-  "Reinstall application"
+  "First unique troubleshooting step",
+  "Second unique troubleshooting step",
+  ...
 ]
 """
         completion = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.3,
+            temperature=0.6,
             max_tokens=1024,
             stream=False,
             stop=None,
