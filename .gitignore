@@ -1,0 +1,29 @@
+# Python Environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# Machine Learning & Data Files
+*.csv
+*.tsv
+*.pkl
+*.model
+nlp_output.txt
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
