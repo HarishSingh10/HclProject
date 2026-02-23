@@ -4,8 +4,9 @@ import pandas as pd
 import datetime
 from datetime import timedelta
 import plotly.express as px
+import os
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = os.environ.get("BACKEND_URL", "http://127.0.0.1:8000")
 
 # Initialize session state
 if "token" not in st.session_state:
