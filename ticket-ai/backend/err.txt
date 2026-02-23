@@ -1,0 +1,15 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.6, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\haris\OneDrive\Desktop\HCL\HclProject\ticket-ai\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\haris\OneDrive\Desktop\HCL\HclProject\ticket-ai\backend
+plugins: anyio-4.12.1
+collecting ... collected 4 items
+
+test_nlp.py::test_preprocess_text PASSED                                 [ 25%]
+test_nlp.py::test_preprocess_text_empty PASSED                           [ 50%]
+test_nlp.py::test_generate_ai_resolution_valid PASSED                    [ 75%]
+test_nlp.py::test_generate_ai_resolution_fallback PASSED                 [100%]
+
+============================== 4 passed in 2.24s ==============================
+
+STDERR:
