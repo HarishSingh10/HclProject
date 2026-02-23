@@ -1,0 +1,1 @@
+{"admin": {"password": "admin123", "type": "admin", "email": "admin@company.com"}, "user": {"password": "user123", "type": "user", "email": "user@company.com"}}
